@@ -2,6 +2,17 @@
     font-family: Roboto, sans-serif;
 }
 
-body{
+header{
     background-color: #1f2937;
+}
+
+
+
+footer{
+    background-color: #1f2937;
+    text-align: center;
+    display: block;
+    padding: 30px;
+    color: #fff;
+    font-size: 10px;
 }
