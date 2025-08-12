@@ -5,17 +5,19 @@
 }
 
 body{
+    background-color: #1F2937;
     font-family: Roboto, sans-serif;
-
     display: flex;
     flex-direction: column;
 }
 
 header{
-    background-color: #1F2937;
+
+    height: 80px;
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .logo{
@@ -32,11 +34,50 @@ nav a{
     text-decoration: none;
     margin: 0 10px;
     font-size: 14px;
-
 }
 nav li{
     display: inline;
+    margin-right: 4vw;
 }
 nav a:hover{
     text-decoration: underline;
+}
+
+.hero-section{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.hero,h1{
+    font-size: 11px;
+    color: white;
+}
+h1{
+    font-size: 24px;
+    width: 50%;
+}
+.image{
+    font-size: 11px;
+    box-sizing: border-box;
+    width: 400px;
+    height: 180px;
+    margin: 0 20px;
+    border: 8px;
+    background-color: #C0C0C0;
+    color: #F1FAF8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button{
+    color: #F1FAF8;
+    background-color: #5599FF;
+    Width: 100px;
+    height: 30px;
+    margin: 10px 0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
