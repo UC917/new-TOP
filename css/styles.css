@@ -1,83 +1,268 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+/* -------------------- */
+/* --- 自定义属性 --- */
+/* -------------------- */
+:root {
+    /* 颜色方案 */
+    --primary-dark-bg: #1F2937;      /* 主要深色背景 (页眉, 页脚, 英雄区域) */
+    --primary-blue: #3882F6;         /* 主要蓝色 (按钮, 边框) */
+    --header-logo-text: #F9FAF8;     /* 页眉 Logo 和英雄区域主标题文本颜色 */
+    --header-link-text: #E5E7EB;     /* 页眉链接和英雄区域副标题文本颜色 */
+    --quote-bg: #E5E7EB;             /* 引用区域背景色 */
+    --dark-text: #1F2937;             /* 深色文本 (信息标题, 引用文本) */
+    --placeholder-bg: #6D747D;       /* 图像占位符背景色 */
+    --white-text: #FFFFFF;           /* 白色文本 */
+
+    /* 字体 */
+    --main-font: 'Roboto', sans-serif; /* 主要字体 */
+
+    /* 字体大小 */
+    --font-size-hero-main: 48px;
+    --font-size-info-header: 36px;
+    --font-size-quote: 36px;
+    --font-size-logo: 24px;
+    --font-size-cta-header: 24px;
+    --font-size-cite: 24px;
+    --font-size-nav: 18px;
+    --font-size-hero-sub: 18px;
+    --font-size-button: 16px;
+    --font-size-card: 16px;
+
+    /* 字重 */
+    --font-weight-thin: 300;
+    --font-weight-normal: 400;
+    --font-weight-bold: 700;
+    --font-weight-extra-bold: 900;
+
+    /* 布局 */
+    --container-width: 80%;
+    --container-max-width: 1100px;
+    --border-radius-sm: 8px;
 }
 
-body{
-    background-color: #1F2937;
-    font-family: Roboto, sans-serif;
-    display: flex;
-    flex-direction: column;
+/* -------------------- */
+/* --- 全局和重置 --- */
+/* -------------------- */
+* {
+    margin: 0;                          /* 移除所有元素的默认外边距 */
+    padding: 0;                         /* 移除所有元素的默认内边距 */
+    box-sizing: border-box;             /* 使元素的宽高计算包含内边距和边框 */
 }
 
-header{
-
-    height: 80px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+body {
+    font-family: var(--main-font), serif;      /* 设置全局字体 */
+    display: flex;                      /* 使用 flex 布局使页脚保持在底部 */
+    flex-direction: column;             /* 子元素垂直排列 */
+    min-height: 100vh;                  /* 确保 body 至少和视口一样高 */
 }
 
-.logo{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #F1FAF8;
-    font-weight: bold;
+main {
+    flex-grow: 1;                       /* 让主内容区域占据所有可用空间 */
+}
+
+.container {
+    width: var(--container-width);      /* 设置容器宽度 */
+    max-width: var(--container-max-width); /* 设置容器最大宽度 */
+    margin: 0 auto;                     /* 自动外边距实现水平居中 */
+}
+
+/* -------------------- */
+/* --- 通用组件 --- */
+/* -------------------- */
+.btn {
+    font-size: var(--font-size-button); /* 设置按钮字体大小 */
+    font-weight: var(--font-weight-bold); /* 设置按钮字体为粗体 */
+    border-radius: var(--border-radius-sm); /* 设置按钮圆角 */
+    padding: 10px 32px;                 /* 设置按钮内边距 (上下, 左右) */
+    cursor: pointer;                    /* 鼠标悬停时显示指针手势 */
+    border: 2px solid transparent;      /* 设置透明边框以防止悬停时跳动 */
+    text-decoration: none;              /* 移除链接默认的下划线 */
+}
+
+.btn-primary {
+    background-color: var(--primary-blue); /* 设置主按钮背景色 */
+    color: var(--white-text);           /* 设置主按钮文本颜色 */
+}
+
+.btn-outline {
+    background-color: var(--primary-blue); /* 设置描边按钮背景色 */
+    color: var(--white-text);           /* 设置描边按钮文本颜色 */
+    border: 2px solid var(--white-text); /* 添加白色边框 */
 }
 
 
-nav a{
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 14px;
-}
-nav li{
-    display: inline;
-    margin-right: 4vw;
-}
-nav a:hover{
-    text-decoration: underline;
+/* -------------------- */
+/* --- 页眉 --- */
+/* -------------------- */
+.header {
+    background-color: var(--primary-dark-bg); /* 设置页眉背景色 */
+    padding: 20px 0;                    /* 设置页眉垂直内边距 */
 }
 
-.hero-section{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-}
-.hero,h1{
-    font-size: 11px;
-    color: white;
-}
-h1{
-    font-size: 24px;
-    width: 50%;
-}
-.image{
-    font-size: 11px;
-    box-sizing: border-box;
-    width: 400px;
-    height: 180px;
-    margin: 0 20px;
-    border: 8px;
-    background-color: #C0C0C0;
-    color: #F1FAF8;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.header-content {
+    display: flex;                      /* 使用 flex 布局 */
+    justify-content: space-between;     /* 子元素两端对齐 */
+    align-items: center;                /* 垂直居中对齐 */
 }
 
-.button{
-    color: #F1FAF8;
-    background-color: #5599FF;
-    Width: 100px;
-    height: 30px;
-    margin: 10px 0;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.logo {
+    color: var(--header-logo-text);     /* 设置 Logo 文本颜色 */
+    font-size: var(--font-size-logo);   /* 设置 Logo 字体大小 */
+    font-weight: var(--font-weight-bold); /* 设置 Logo 字体粗细 */
+}
+
+.navigation ul {
+    list-style-type: none;              /* 移除列表的项目符号 */
+    display: flex;                      /* 使用 flex 布局 */
+    gap: 24px;                          /* 设置导航项之间的间距 */
+}
+
+.navigation a {
+    text-decoration: none;              /* 移除链接的下划线 */
+    color: var(--header-link-text);     /* 设置导航链接文本颜色 */
+    font-size: var(--font-size-nav);    /* 设置导航链接字体大小 */
+}
+
+/* -------------------- */
+/* --- 英雄区域 --- */
+/* -------------------- */
+.hero-section {
+    background-color: var(--primary-dark-bg); /* 设置英雄区域背景色 */
+    padding: 100px 0;                   /* 设置英雄区域垂直内边距 */
+}
+
+.hero-content {
+    display: flex;                      /* 使用 flex 布局 */
+    align-items: center;                /* 垂直居中对齐 */
+    gap: 50px;                          /* 设置文本和图像之间的间距 */
+}
+
+.hero-text, .hero-image {
+    flex: 1;                            /* 两列等分可用空间 */
+}
+
+.hero-text h1 {
+    color: var(--header-logo-text);     /* 设置主标题文本颜色 */
+    font-size: var(--font-size-hero-main); /* 设置主标题字体大小 */
+    font-weight: var(--font-weight-extra-bold); /* 设置主标题字体粗细 */
+    margin-bottom: 10px;                /* 设置主标题下方外边距 */
+}
+
+.hero-text p {
+    color: var(--header-link-text);     /* 设置副标题文本颜色 */
+    font-size: var(--font-size-hero-sub); /* 设置副标题字体大小 */
+    margin-bottom: 15px;                /* 设置副标题下方外边距 */
+}
+
+.hero-image {
+    background-color: var(--placeholder-bg); /* 设置图像占位符背景色 */
+    color: var(--white-text);           /* 设置占位符文本颜色 */
+    height: 215px;                      /* 设置占位符固定高度 */
+    display: flex;                      /* 使用 flex 布局居中文本 */
+    justify-content: center;            /* 水平居中 */
+    align-items: center;                /* 垂直居中 */
+}
+
+/* -------------------- */
+/* --- 信息区域 --- */
+/* -------------------- */
+.info-section {
+    padding: 60px 0;                    /* 设置信息区域垂直内边距 */
+    text-align: center;                 /* 内部所有文本居中 */
+}
+
+.info-title {
+    color: var(--dark-text);            /* 设置标题颜色 */
+    font-size: var(--font-size-info-header); /* 设置标题字体大小 */
+    font-weight: var(--font-weight-extra-bold); /* 设置标题字体粗细 */
+    margin-bottom: 50px;                /* 设置标题下方外边距 */
+}
+
+.info-cards {
+    display: flex;                      /* 使用 flex 布局排列卡片 */
+    justify-content: center;            /* 水平居中卡片组 */
+    gap: 50px;                          /* 设置卡片之间的间距 */
+    flex-wrap: wrap;                    /* 允许卡片在小屏幕上换行 */
+}
+
+.card {
+    max-width: 170px;                   /* 设置卡片最大宽度 */
+    display: flex;                      /* 使用 flex 布局 */
+    flex-direction: column;             /* 卡片内容垂直排列 */
+    align-items: center;                /* 水平居中卡片内容 */
+}
+
+.card-illustration {
+    height: 170px;                      /* 设置插图高度 */
+    width: 170px;                       /* 设置插图宽度 */
+    border: 4px solid var(--primary-blue); /* 添加蓝色边框 */
+    border-radius: var(--border-radius-sm); /* 设置圆角 */
+    margin-bottom: 10px;                /* 设置插图下方外边距 */
+}
+
+.card-text {
+    color: var(--dark-text);            /* 设置卡片文本颜色 */
+    font-size: var(--font-size-card);   /* 设置卡片文本字体大小 */
+}
+
+/* -------------------- */
+/* --- 引用区域 --- */
+/* -------------------- */
+.quote-section {
+    background-color: var(--quote-bg);  /* 设置引用区域背景色 */
+    padding: 100px 0;                   /* 设置引用区域垂直内边距 */
+}
+
+.quote-content {
+    max-width: 800px;                   /* 限制内容最大宽度 */
+    margin: 0 auto;                     /* 水平居中 */
+}
+
+.quote-content blockquote {
+    color: var(--dark-text);            /* 设置引用文本颜色 */
+    font-size: var(--font-size-quote);  /* 设置引用文本字体大小 */
+    font-style: italic;                 /* 设置斜体 */
+    font-weight: var(--font-weight-thin); /* 设置细字重 */
+    margin-bottom: 10px;                /* 设置引用文本下方外边距 */
+}
+
+.quote-content figcaption {
+    color: var(--dark-text);            /* 设置来源文本颜色 */
+    font-weight: var(--font-weight-bold); /* 设置加粗字体 */
+    font-size: var(--font-size-cite);   /* 设置字体大小 */
+    text-align: right;                  /* 文本右对齐 */
+}
+
+/* -------------------- */
+/* --- CTA 区域 --- */
+/* -------------------- */
+.cta-section {
+    padding: 100px 0;                   /* 设置 CTA 区域垂直内边距 */
+}
+
+.cta-box {
+    background-color: var(--primary-blue); /* 设置 CTA 容器背景色 */
+    color: var(--white-text);           /* 设置内部所有文本为白色 */
+    border-radius: var(--border-radius-sm); /* 设置圆角 */
+    padding: 50px 100px;                /* 设置内边距 */
+    display: flex;                      /* 使用 flex 布局 */
+    justify-content: space-between;     /* 内容两端对齐 */
+    align-items: center;                /* 垂直居中对齐 */
+    flex-wrap: wrap;                    /* 允许在小屏幕上换行 */
+    gap: 20px;                          /* 设置元素间距 */
+}
+
+.cta-text h3 {
+    font-size: var(--font-size-cta-header); /* 设置 CTA 标题字体大小 */
+    font-weight: var(--font-weight-bold); /* 设置粗体 */
+    margin-bottom: 5px;                 /* 设置标题下方外边距 */
+}
+
+/* -------------------- */
+/* --- 页脚 --- */
+/* -------------------- */
+.footer {
+    background-color: var(--primary-dark-bg); /* 设置页脚背景色 */
+    color: var(--header-link-text);     /* 设置页脚文本颜色 */
+    padding: 40px 0;                    /* 设置页脚垂直内边距 */
+    text-align: center;                 /* 文本居中 */
 }
